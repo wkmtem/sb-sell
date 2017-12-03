@@ -1,0 +1,7 @@
+springboot 使用连接池优先级:
+1、会优先使用tomcat连接池，因为其性能和并发性很好，如果可用的话，将会优先使用。tomcat连接池，请查看： http://tomcat.apache.org/tomcat-8.0-doc/jdbc-pool.html
+2、如果HikariCP可用，会选择使用 http://brettwooldridge.github.io/HikariCP/
+3、如果DBCP可用，会选择使用，但是不推荐在在先生产品使用它
+4、最后，如果使用DBCP2，会选择使用
+
+注:如果在pom文件里有spring-boot-starter-jdbc 或 spring-boot-starter-data-jpa 依赖项，那么，会自动获取tomcat-jdbc连接池

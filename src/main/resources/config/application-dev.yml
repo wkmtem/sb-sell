@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    # 数据库驱动配置
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://rm-uf6h02b6qu44p4317o.mysql.rds.aliyuncs.com:3306/examination_test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&zeroDateTimeBehavior=convertToNull&autoReconnect=true&allowMultiQueries=true
+    username: tlj
+    password: Tlj20170322@
+
+  jpa:
+    hibernate:
+      # create: 自动删除同名表后创建空表(慎用)
+      # create-drop: 自动创建表, 应用停止, 表删除(慎用)
+      # none: 无操作
+      # update: 自动创建表,同名表更新(推荐)
+      # validate: 验证表结构, 不一致则抛异常
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8080
+  context-path: /sell

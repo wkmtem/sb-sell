@@ -1,0 +1,5 @@
+# java -jar target/xxx.war --spring.profiles.active=prod
+spring:
+  profiles:
+    # application-后文件名
+    active: dev

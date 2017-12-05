@@ -141,7 +141,7 @@ public class OrderServiceImpl implements IOrderService {
 
     /**
      * Method Name: findList
-     * Description: 查询订单列表
+     * Description: 买家: 查询订单列表
      * Create DateTime: 2017/12/6 上午12:07
      * @param buyerOpenid
      * @param pageable
@@ -268,7 +268,7 @@ public class OrderServiceImpl implements IOrderService {
 
     /**
      * Method Name: findList
-     * Description: 查询订单列表(分页)
+     * Description: 卖家: 查询订单列表(分页)
      * Create DateTime: 2017/12/6 上午12:09
      * @param pageable
      * @return
@@ -276,7 +276,7 @@ public class OrderServiceImpl implements IOrderService {
     @Override
     public Page<OrderDTO> findList(Pageable pageable) {
 
-        Page<OrderMaster> orderMasterPage = orderMasterRepository.findAll(pageable);
+        Page<OrderMaster> orderMasterPage = this.orderMasterRepository.findAll(pageable);
         List<OrderDTO> orderDTOList = OrderMaster2OrderDTOConverter.convert(orderMasterPage.getContent());
         return new PageImpl<>(orderDTOList, pageable, orderMasterPage.getTotalElements());
     }

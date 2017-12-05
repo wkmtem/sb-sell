@@ -47,6 +47,7 @@ public class ProductServiceImplTest {
             }
         }
         Assert.assertNotEquals(0, all.getContent().size());
+        Assert.assertTrue("查询所有商品列表 ", all.getTotalElements() > 0);
     }
 
     @Test

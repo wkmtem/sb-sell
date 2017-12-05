@@ -20,7 +20,7 @@ public interface IOrderService {
     /** 查询单个订单 */
     OrderDTO findOne(String orderId);
 
-    /** 查询订单列表 */
+    /** 买家: 查询订单列表 */
     Page<OrderDTO> findList(String buyerOpenid, Pageable pageable);
 
     /** 取消订单、退款 */
@@ -32,7 +32,7 @@ public interface IOrderService {
     /** 支付订单 */
     OrderDTO paid(OrderDTO orderDTO);
 
-    /** 查询订单列表(分页) */
+    /** 卖家: 查询订单列表(分页) */
     Page<OrderDTO> findList(Pageable pageable);
 
 }

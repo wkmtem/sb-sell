@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- logback 复杂配置 -->
+<configuration>
+    <!-- 控制台日志配置项 -->
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>
+                <!-- %d: date, %msg: 日志信息, %n: 换行 -->
+                %d - %msg%n
+            </pattern>
+        </layout>
+    </appender>
+
+    <!-- 输出文件日志配置项 -->
+    <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender"><!-- 滚动输出(every day) -->
+        <!-- 过滤: 排除输出ERROR级别日志信息 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+            <!-- <onMismatch>NEUTRAL</onMismatch>&lt;!&ndash; 中立: 忽略此规则 &ndash;&gt; -->
+        </filter>
+        <encoder>
+            <pattern>
+                <!-- %d: date, %msg: 日志信息, %n: 换行 -->
+                %d - %msg%n
+            </pattern>
+        </encoder>
+        <!-- 滚动策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 输入日志文件路径 -->
+            <fileNamePattern>
+                /Users/wkmtem/development/tomcat-7.0.77/info_%d.log
+            </fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <!-- error日志配置项 -->
+    <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender"><!-- 滚动输出(every day) -->
+        <!-- 过滤: 拦截输出ERROR日志信息 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <encoder>
+            <pattern>
+                <!-- %d: date, %msg: 日志信息, %n: 换行 -->
+                %d - %msg%n
+            </pattern>
+        </encoder>
+        <!-- 滚动策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 输入日志文件路径 -->
+            <fileNamePattern>
+                /Users/wkmtem/development/tomcat-7.0.77/error_%d.log
+            </fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 日志范围 -->
+    <root level="INFO"><!-- 日志级别(输出当前级别及左边所有级别日志信息): error-40、warn-30、info-20、debug-10、trace-0 -->
+        <appender-ref ref="consoleLog" />
+        <appender-ref ref="fileInfoLog" />
+        <appender-ref ref="fileErrorLog" />
+    </root>
+</configuration>

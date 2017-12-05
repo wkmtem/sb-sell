@@ -19,9 +19,9 @@ import java.util.Date;
  * Version: 1.0
  */
 //@Table /** IllegalArgumentException: Not a managed type */
-@Entity(name = "product_category")
-@DynamicUpdate
 @Data
+@DynamicUpdate
+@Entity(name = "product_category")
 public class ProductCategory {
 
     @Id

@@ -25,6 +25,7 @@
 		<druid.version>1.1.5</druid.version>
 		<bonecp.version>0.8.0.RELEASE</bonecp.version>
 		<commons-lang3.version>3.7</commons-lang3.version>
+		<wechat.version>2.9.0</wechat.version>
 	</properties>
 
 	<dependencies>
@@ -71,6 +72,12 @@
 		<!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
 		<!--</dependency>-->
 
+		<!-- spring freemarker模板引擎,ftl模版放置于resources下templates目录中 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+
 		<!-- mysql组件 -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -91,12 +98,6 @@
 			<!--<version>${bonecp.version}</version>-->
 		<!--</dependency>-->
 
-		<!-- 日志注解@Slf4j @Data -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-		</dependency>
-
 		<!-- 印尼岛名称, 日志注解@Slf4j @Data @Getter @Setter @ToString-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -108,6 +109,32 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>${commons-lang3.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+
+		<!-- 微信开发者联盟: 微信支付、开放平台、小程序、企业号和公众号(包括服务号和订阅号) SDK
+			 微信小程序: weixin-java-miniapp
+			 微信支付: weixin-java-pay
+			 微信开放平台: weixin-java-open
+			 公众号: weixin-java-mp
+			 企业号/企业微信: weixin-java-cp
+		-->
+		<!-- 微信公众号 -->
+		<dependency>
+			<groupId>com.github.binarywang</groupId>
+			<artifactId>weixin-java-mp</artifactId>
+			<version>${wechat.version}</version>
+		</dependency>
+
+		<!-- 第三方(廖师兄) 支付SDK -->
+		<dependency>
+			<groupId>cn.springboot</groupId>
+			<artifactId>best-pay-sdk</artifactId>
+			<version>1.1.0</version>
 		</dependency>
 
 	</dependencies>

@@ -1,5 +1,6 @@
 package com.nsntc.sell.exception;
 
+import com.nsntc.sell.enums.HttpResultEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,6 +17,11 @@ import lombok.EqualsAndHashCode;
 public class ExceptionCustom extends RuntimeException{
 
     private Integer code;
+
+    public ExceptionCustom(HttpResultEnum httpResultEnum) {
+        super(httpResultEnum.getMessage());
+        this.code = httpResultEnum.getCode();
+    }
 
     public ExceptionCustom(Integer code, String message) {
         super(message);

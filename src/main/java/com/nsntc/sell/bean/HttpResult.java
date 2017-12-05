@@ -1,5 +1,6 @@
 package com.nsntc.sell.bean;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 /**

@@ -29,7 +29,7 @@
                     </table>
                 </div>
 
-            <#--订单详情表数据-->
+                <#--订单详情表数据-->
                 <div class="col-md-12 column">
                     <table class="table table-bordered">
                         <thead>
@@ -55,7 +55,7 @@
                     </table>
                 </div>
 
-            <#--操作-->
+                <#--操作-->
                 <div class="col-md-12 column">
                 <#if orderDTO.getOrderStatusEnum().message == "新订单">
                     <a href="/sell/seller/order/finish?orderId=${orderDTO.orderId}" type="button" class="btn btn-default btn-primary">完结订单</a>

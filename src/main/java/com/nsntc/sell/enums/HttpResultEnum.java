@@ -37,6 +37,10 @@ public enum HttpResultEnum {
 
     WXPAY_NOTIFY_MONEY_VERIFY_ERROR(21, "微信支付异步通知金额校验不通过"),
 
+    ORDER_CANCEL_SUCCESS(22, "订单取消成功"),
+
+    ORDER_FINISH_SUCCESS(23, "订单完结成功"),
+
     PARAM_ERROR(1, "参数不正确"),
 
     URL_ENCODER_ERROR(2, "URL地址编码错误"),

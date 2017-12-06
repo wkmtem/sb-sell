@@ -1,7 +1,7 @@
 <html>
 <#include "../common/header.ftl">
 
-<!-- 卖家后台 使用bootstrap-->
+<#--卖家后台 使用bootstrap-->
 <body>
 <div id="wrapper" class="toggled">
 
@@ -23,6 +23,7 @@
                             <th>金额</th>
                             <th>订单状态</th>
                             <th>支付状态</th>
+                            <#--<th>支付方式</th>-->
                             <th>创建时间</th>
                             <th colspan="2">操作</th>
                         </tr>
@@ -31,13 +32,13 @@
 
                         <#list orderDTOPage.content as orderDTO>
                         <tr>
-                            <!-- 属性 -->
+                            <#--属性-->
                             <td>${orderDTO.orderId}</td>
                             <td>${orderDTO.buyerName}</td>
                             <td>${orderDTO.buyerPhone}</td>
                             <td>${orderDTO.buyerAddress}</td>
                             <td>${orderDTO.orderAmount}</td>
-                            <!-- 方法 -->
+                            <#--方法-->
                             <td>${orderDTO.getOrderStatusEnum().message}</td>
                             <td>${orderDTO.getPayStatusEnum().message}</td>
                             <td>${orderDTO.createTime}</td>
@@ -53,7 +54,7 @@
                     </table>
                 </div>
 
-            <#--分页-->
+                <#--分页-->
                 <div class="col-md-12 column">
                     <ul class="pagination pull-right">
                     <#if currentPage lte 1>
@@ -61,7 +62,7 @@
                     <#else>
                         <li><a href="/sell/seller/order/list?page=${currentPage - 1}&size=${size}">上一页</a></li>
                     </#if>
-
+                    <#--1..5:1至5, 1..<5: 1至4 -->
                     <#list 1..orderDTOPage.getTotalPages() as index>
                         <#if currentPage == index>
                             <li class="disabled"><a href="#">${index}</a></li>

@@ -51,7 +51,6 @@ public class SellerOrderController {
         map.put("orderDTOPage", orderDTOPage);
         map.put("currentPage", page);
         map.put("size", size);
-//        orderDTOPage.getTotalPages()
         return new ModelAndView("order/list", map);
     }
 
@@ -64,18 +63,18 @@ public class SellerOrderController {
      * @return
      */
     @GetMapping("cancel")
-    public ModelAndView cancel(@RequestParam(value = "orderId", required = true) String orderId,
+    public ModelAndView cancel(@RequestParam(value = "orderId") String orderId,
                                Map<String, Object> map) {
         try {
             OrderDTO orderDTO = this.orderService.findOne(orderId);
             this.orderService.cancel(orderDTO);
+        /** 捕获orderService抛出的异常 */
         } catch (ExceptionCustom e) {
             log.error("【卖家端取消订单】发生异常{}", e);
             map.put("msg", e.getMessage());
             map.put("url", "/sell/seller/order/list");
             return new ModelAndView("common/error", map);
         }
-
         map.put("msg", HttpResultEnum.ORDER_CANCEL_SUCCESS.getMessage());
         map.put("url", "/sell/seller/order/list");
         return new ModelAndView("common/success");
@@ -90,7 +89,7 @@ public class SellerOrderController {
      * @return
      */
     @GetMapping("detail")
-    public ModelAndView detail(@RequestParam(value = "orderId", required = true) String orderId,
+    public ModelAndView detail(@RequestParam(value = "orderId") String orderId,
                                Map<String, Object> map) {
         OrderDTO orderDTO = null;
         try {
@@ -101,7 +100,6 @@ public class SellerOrderController {
             map.put("url", "/sell/seller/order/list");
             return new ModelAndView("common/error", map);
         }
-
         map.put("orderDTO", orderDTO);
         return new ModelAndView("order/detail", map);
     }
@@ -115,7 +113,7 @@ public class SellerOrderController {
      * @return
      */
     @GetMapping("finish")
-    public ModelAndView finished(@RequestParam(value = "orderId", required = true) String orderId,
+    public ModelAndView finished(@RequestParam(value = "orderId") String orderId,
                                  Map<String, Object> map) {
         try {
             OrderDTO orderDTO = this.orderService.findOne(orderId);
@@ -126,7 +124,6 @@ public class SellerOrderController {
             map.put("url", "/sell/seller/order/list");
             return new ModelAndView("common/error", map);
         }
-
         map.put("msg", HttpResultEnum.ORDER_FINISH_SUCCESS.getMessage());
         map.put("url", "/sell/seller/order/list");
         return new ModelAndView("common/success");

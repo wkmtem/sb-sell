@@ -1,21 +1,15 @@
 package com.nsntc.sell.pojo.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.imooc.dataobject.OrderDetail;
-import com.imooc.enums.OrderStatusEnum;
-import com.imooc.enums.PayStatusEnum;
-import com.imooc.utils.EnumUtil;
-import com.imooc.utils.serializer.Date2LongSerializer;
 import com.nsntc.sell.enums.OrderStatusEnum;
 import com.nsntc.sell.enums.PayStatusEnum;
 import com.nsntc.sell.pojo.po.OrderDetail;
+import com.nsntc.sell.util.EnumUtil;
 import com.nsntc.sell.util.serializer.Date2LongSerializer;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -66,11 +60,11 @@ public class OrderDTO {
 
     List<OrderDetail> orderDetailList;
 
+    /** 根据int值返回枚举类型message */
     @JsonIgnore
     public OrderStatusEnum getOrderStatusEnum() {
         return EnumUtil.getByCode(orderStatus, OrderStatusEnum.class);
     }
-
     @JsonIgnore
     public PayStatusEnum getPayStatusEnum() {
         return EnumUtil.getByCode(payStatus, PayStatusEnum.class);

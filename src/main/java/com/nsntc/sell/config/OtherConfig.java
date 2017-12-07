@@ -1,21 +1,21 @@
-package com.nsntc.sell.config.properties;
+package com.nsntc.sell.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * Class Name: OtherProperties
- * Package: com.nsntc.sell.config.properties
+ * Class Name: OtherConfig
+ * Package: com.nsntc.sell.config
  * Description: 读取yml属性
  * @author wkm
- * Create DateTime: 2017/12/4 下午7:14
+ * Create DateTime: 2017/12/8 上午12:58
  * Version: 1.0
  */
 @Component
 @Data
 @ConfigurationProperties(prefix = "other")
-public class OtherProperties {
+public class OtherConfig {
 
     private Integer aaa;
     private Integer bbb;

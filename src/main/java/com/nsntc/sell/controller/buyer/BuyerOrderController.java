@@ -38,7 +38,6 @@ public class BuyerOrderController {
 
     @Autowired
     private IOrderService orderService;
-
     @Autowired
     private IBuyerService buyerService;
 

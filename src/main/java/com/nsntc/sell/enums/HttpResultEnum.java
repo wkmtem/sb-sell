@@ -43,6 +43,10 @@ public enum HttpResultEnum {
 
     PRODUCT_STATUS_ERROR(24, "商品状态不正确"),
 
+    LOGIN_FAIL(25, "登录失败[登录信息不正确]"),
+
+    LOGOUT_SUCCESS(26, "登出成功"),
+
     PARAM_ERROR(1, "参数不正确"),
 
     URL_ENCODER_ERROR(2, "URL地址编码错误"),

@@ -1,5 +1,6 @@
-package com.nsntc.sell.controller.wechat;
+package com.nsntc.sell.controller.wechat.buyer;
 
+import com.nsntc.sell.config.other.ProjectUrlConfig;
 import com.nsntc.sell.enums.HttpResultEnum;
 import com.nsntc.sell.exception.ExceptionCustom;
 import lombok.extern.slf4j.Slf4j;
@@ -16,22 +17,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.net.URLEncoder;
 
 /**
- * Class Name: WechatController
- * Package: com.nsntc.sell.controller.wechat
+ * Class Name: WechatBuyerController
+ * Package: com.nsntc.sell.controller.wechat.buyer
  * Description: 
  * @author wkm
- * Create DateTime: 2017/12/4 下午8:58
+ * Create DateTime: 2017/12/7 下午11:43
  * Version: 1.0
  */
 @Controller
 @RequestMapping("wechat")
 @Slf4j
-public class WechatController {
+public class WechatBuyerController {
 
     @Autowired
     private WxMpService wxMpService;
-    @Autowired
-    private WxMpService wxOpenService;
     @Autowired
     private ProjectUrlConfig projectUrlConfig;
 
@@ -81,43 +80,6 @@ public class WechatController {
             throw new ExceptionCustom(HttpResultEnum.WECHAT_MP_ERROR.getCode(), e.getError().getErrorMsg());
         }
         /** 携带openid重定向至应用url, openid由前端保存至cookie中 */
-        String openId = wxMpOAuth2AccessToken.getOpenId();
-        return "redirect:" + returnUrl + "?openid=" + openId;
-    }
-
-    /**
-     * Method Name: qrAuthorize
-     * Description: 扫码授权
-     * Create DateTime: 2017/12/4 下午10:19
-     * @param returnUrl
-     * @return
-     */
-    @GetMapping("/qrAuthorize")
-    public String qrAuthorize(@RequestParam("returnUrl") String returnUrl) {
-        String url = this.projectUrlConfig.getWechatOpenAuthorize() + "/sell/wechat/qrWxUserInfo";
-        String redirectUrl = this.wxOpenService.buildQrConnectUrl(url, WxConsts.QRCONNECT_SCOPE_SNSAPI_LOGIN, URLEncoder.encode(returnUrl));
-        return "redirect:" + redirectUrl;
-    }
-
-    /**
-     * Method Name: qrWxUserInfo
-     * Description: 重定向跳转地址，授权并获取微信用户openid
-     * Create DateTime: 2017/12/5 下午7:53
-     * @param code
-     * @param returnUrl
-     * @return
-     */
-    @GetMapping("/qrWxUserInfo")
-    public String qrWxUserInfo(@RequestParam("code") String code,
-                               @RequestParam("state") String returnUrl) {
-        WxMpOAuth2AccessToken wxMpOAuth2AccessToken = null;
-        try {
-            wxMpOAuth2AccessToken = this.wxOpenService.oauth2getAccessToken(code);
-        } catch (WxErrorException e) {
-            log.error("【微信网页授权】{}", e);
-            throw new ExceptionCustom(HttpResultEnum.WECHAT_MP_ERROR.getCode(), e.getError().getErrorMsg());
-        }
-        log.info("wxMpOAuth2AccessToken={}", wxMpOAuth2AccessToken);
         String openId = wxMpOAuth2AccessToken.getOpenId();
         return "redirect:" + returnUrl + "?openid=" + openId;
     }

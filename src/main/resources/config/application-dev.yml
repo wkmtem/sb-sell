@@ -8,6 +8,7 @@ spring:
     password: Tlj20170322@
 
   jpa:
+    database: mysql
     hibernate:
       # create: 自动删除同名表后创建空表(慎用)
       # create-drop: 自动创建表, 应用停止, 表删除(慎用)
@@ -16,6 +17,23 @@ spring:
       # validate: 验证表结构, 不一致则抛异常
       ddl-auto: update
     show-sql: true
+
+  redis:
+    database: 0
+    host: 139.196.195.162
+    port: 6379
+    password: omega
+    # pool setting
+    pool:
+      max-idle: 8
+      min-idle: 0
+      max-active: 8
+      max-wait: -1
+    # name of Redis server
+    #sentinel:
+      #master:
+    # comma-separated list of host:portpairs
+      #nodes:
 
 server:
   port: 8080

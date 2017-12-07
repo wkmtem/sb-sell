@@ -89,7 +89,7 @@ public class SellerCategoryController {
                 productCategory = this.categoryService.findOne(form.getCategoryId());
             }
             BeanUtils.copyProperties(form, productCategory);
-            categoryService.save(productCategory);
+            this.categoryService.save(productCategory);
         } catch (ExceptionCustom e) {
             map.put("msg", e.getMessage());
             map.put("url", "/sell/seller/category/index");

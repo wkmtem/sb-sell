@@ -9,38 +9,38 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**
- * Class Name: WechatMpConfig
+ * Class Name: WechatOpenConfig
  * Package: com.nsntc.sell.config.wechat
- * Description: 微信公众号配置
+ * Description: 微信开放平台配置
  * @author wkm
- * Create DateTime: 2017/12/4 下午9:02
+ * Create DateTime: 2017/12/8 上午12:09
  * Version: 1.0
  */
 @Component
-public class WechatMpConfig {
+public class WechatOpenConfig {
 
     @Autowired
     private WechatAccountConfig wechatAccountConfig;
 
     /**
-     * Method Name: wxMpService
+     * Method Name: wxOpenService
      * Description: 第三方sdk定义通过WxMpService构造参数
-     * Create DateTime: 2017/12/8 上午12:18
+     * Create DateTime: 2017/12/8 上午12:13
      * @return
      */
     @Bean
-    public WxMpService wxMpService() {
-        WxMpService wxMpService = new WxMpServiceImpl();
-        wxMpService.setWxMpConfigStorage(this.wxMpConfigStorage());
-        return wxMpService;
+    public WxMpService wxOpenService() {
+        WxMpService wxOpenService = new WxMpServiceImpl();
+        wxOpenService.setWxMpConfigStorage(this.wxOpenConfigStorage());
+        return wxOpenService;
     }
 
     @Bean
-    public WxMpConfigStorage wxMpConfigStorage() {
+    public WxMpConfigStorage wxOpenConfigStorage() {
         /** 基于内存的微信配置provider，在实际生产环境中应将这些配置持久化 */
-        WxMpInMemoryConfigStorage wxMpConfigStorage = new WxMpInMemoryConfigStorage();
-        wxMpConfigStorage.setAppId(this.wechatAccountConfig.getMpAppId());
-        wxMpConfigStorage.setSecret(this.wechatAccountConfig.getMpAppSecret());
-        return wxMpConfigStorage;
+        WxMpInMemoryConfigStorage wxMpInMemoryConfigStorage = new WxMpInMemoryConfigStorage();
+        wxMpInMemoryConfigStorage.setAppId(this.wechatAccountConfig.getOpenAppId());
+        wxMpInMemoryConfigStorage.setSecret(this.wechatAccountConfig.getOpenAppSecret());
+        return wxMpInMemoryConfigStorage;
     }
 }

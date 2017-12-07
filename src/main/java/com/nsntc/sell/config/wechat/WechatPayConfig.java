@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class WechatPayConfig {
 
     @Autowired
-    private WechatAccountConfig accountConfig;
+    private WechatAccountConfig wechatAccountConfig;
 
     @Bean
     public BestPayServiceImpl bestPayService() {
@@ -37,17 +37,17 @@ public class WechatPayConfig {
     public WxPayH5Config wxPayH5Config() {
         WxPayH5Config wxPayH5Config = new WxPayH5Config();
         /** 公众平台id */
-        wxPayH5Config.setAppId(accountConfig.getMpAppId());
+        wxPayH5Config.setAppId(this.wechatAccountConfig.getMpAppId());
         /** 公众平台密钥 */
-        wxPayH5Config.setAppSecret(accountConfig.getMpAppSecret());
+        wxPayH5Config.setAppSecret(this.wechatAccountConfig.getMpAppSecret());
         /** 商户号 */
-        wxPayH5Config.setMchId(accountConfig.getMchId());
+        wxPayH5Config.setMchId(this.wechatAccountConfig.getMchId());
         /** 商户密钥 */
-        wxPayH5Config.setMchKey(accountConfig.getMchKey());
+        wxPayH5Config.setMchKey(this.wechatAccountConfig.getMchKey());
         /** 商户证书路径 */
-        wxPayH5Config.setKeyPath(accountConfig.getKeyPath());
+        wxPayH5Config.setKeyPath(this.wechatAccountConfig.getKeyPath());
         /** 微信支付异步通知地址 */
-        wxPayH5Config.setNotifyUrl(accountConfig.getNotifyUrl());
+        wxPayH5Config.setNotifyUrl(this.wechatAccountConfig.getNotifyUrl());
         return wxPayH5Config;
     }
 }

@@ -41,9 +41,13 @@ public enum HttpResultEnum {
 
     ORDER_FINISH_SUCCESS(23, "订单完结成功"),
 
+    PRODUCT_STATUS_ERROR(24, "商品状态不正确"),
+
     PARAM_ERROR(1, "参数不正确"),
 
     URL_ENCODER_ERROR(2, "URL地址编码错误"),
+
+    JSON_CONVERT_FAILURE(3, "json convert failure"),
 
     ;
 

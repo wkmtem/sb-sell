@@ -1,9 +1,9 @@
-package com.nsntc.sell.service.impl;
+package com.nsntc.sell.service.buyer.impl;
 
 import com.nsntc.sell.enums.HttpResultEnum;
 import com.nsntc.sell.exception.ExceptionCustom;
 import com.nsntc.sell.pojo.dto.OrderDTO;
-import com.nsntc.sell.service.IBuyerService;
+import com.nsntc.sell.service.buyer.IBuyerService;
 import com.nsntc.sell.service.IOrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

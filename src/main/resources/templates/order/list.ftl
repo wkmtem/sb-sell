@@ -10,6 +10,7 @@
 
     <#--主要内容content-->
     <div id="page-content-wrapper">
+        <#--fluid流动布局-->
         <div class="container-fluid">
             <div class="row clearfix">
                 <div class="col-md-12 column">

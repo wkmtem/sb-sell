@@ -1,4 +1,4 @@
-package com.nsntc.sell.controller;
+package com.nsntc.sell.controller.seller;
 
 import com.nsntc.sell.enums.HttpResultEnum;
 import com.nsntc.sell.exception.ExceptionCustom;

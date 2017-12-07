@@ -84,32 +84,57 @@ public class ProductServiceImpl implements IProductService {
         }
     }
 
+    /**
+     * Method Name: onSale
+     * Description: 上架
+     * Create DateTime: 2017/12/7 下午4:32
+     * @param productId
+     * @return
+     */
     @Override
     public ProductInfo onSale(String productId) {
-
-        ProductInfo productInfo = this.productInfoRepository.findOne(productId);
-        if (null == productInfo) {
-            throw new ExceptionCustom(HttpResultEnum.PRODUCT_NOT_EXIST);
-        }
-        if (productInfo.getProductStatusEnum() == ProductStatusEnum.UP) {
-            throw new ExceptionCustom(HttpResultEnum.PRODUCT_STATUS_ERROR);
-        }
-        /** 更新 */
-        productInfo.setProductStatus(ProductStatusEnum.UP.getCode());
-        return this.productInfoRepository.save(productInfo);
+        return this.onOrOffSale(productId, ProductStatusEnum.UP.getCode());
     }
 
+    /**
+     * Method Name: offSale
+     * Description: 下架
+     * Create DateTime: 2017/12/7 下午4:32
+     * @param productId
+     * @return
+     */
     @Override
     public ProductInfo offSale(String productId) {
+        return this.onOrOffSale(productId, ProductStatusEnum.DOWN.getCode());
+    }
+
+    /**
+     * Method Name: onOrOffSale
+     * Description: 上下架操作
+     * Create DateTime: 2017/12/7 下午4:46
+     * @param productId
+     * @param type
+     * @return
+     */
+    private ProductInfo onOrOffSale(String productId, Integer type) {
         ProductInfo productInfo = this.productInfoRepository.findOne(productId);
         if (null == productInfo) {
             throw new ExceptionCustom(HttpResultEnum.PRODUCT_NOT_EXIST);
         }
-        if (productInfo.getProductStatusEnum() == ProductStatusEnum.DOWN) {
-            throw new ExceptionCustom(HttpResultEnum.PRODUCT_STATUS_ERROR);
+        /** 上架 */
+        if (type.equals(ProductStatusEnum.UP.getCode())) {
+            if (productInfo.getProductStatusEnum() == ProductStatusEnum.UP) {
+                throw new ExceptionCustom(HttpResultEnum.PRODUCT_STATUS_ERROR);
+            }
+            productInfo.setProductStatus(ProductStatusEnum.UP.getCode());
+        /** 下架*/
+        } else {
+            if (productInfo.getProductStatusEnum() == ProductStatusEnum.DOWN) {
+                throw new ExceptionCustom(HttpResultEnum.PRODUCT_STATUS_ERROR);
+            }
+            productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
         }
         /** 更新 */
-        productInfo.setProductStatus(ProductStatusEnum.DOWN.getCode());
         return this.productInfoRepository.save(productInfo);
     }
 }

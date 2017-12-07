@@ -1,0 +1,2 @@
+business object业务对象: 即包装类对象
+一个bo内包装了1个或多个po

@@ -1,4 +1,4 @@
-package com.nsntc.sell.service;
+package com.nsntc.sell.service.buyer;
 
 import com.nsntc.sell.pojo.dto.OrderDTO;
 

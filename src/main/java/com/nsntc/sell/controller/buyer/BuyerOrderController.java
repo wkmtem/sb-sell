@@ -1,4 +1,4 @@
-package com.nsntc.sell.controller;
+package com.nsntc.sell.controller.buyer;
 
 import com.nsntc.sell.bean.HttpResult;
 import com.nsntc.sell.converter.OrderForm2OrderDTOConverter;
@@ -6,7 +6,7 @@ import com.nsntc.sell.enums.HttpResultEnum;
 import com.nsntc.sell.exception.ExceptionCustom;
 import com.nsntc.sell.form.OrderForm;
 import com.nsntc.sell.pojo.dto.OrderDTO;
-import com.nsntc.sell.service.IBuyerService;
+import com.nsntc.sell.service.buyer.IBuyerService;
 import com.nsntc.sell.service.IOrderService;
 import com.nsntc.sell.util.HttpResultUtil;
 import lombok.extern.slf4j.Slf4j;

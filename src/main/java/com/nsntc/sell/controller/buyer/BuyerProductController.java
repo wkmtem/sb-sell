@@ -1,4 +1,4 @@
-package com.nsntc.sell.controller;
+package com.nsntc.sell.controller.buyer;
 
 import com.nsntc.sell.bean.HttpResult;
 import com.nsntc.sell.pojo.po.ProductCategory;

@@ -1,5 +1,8 @@
 package com.nsntc.sell.pojo.po;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.nsntc.sell.enums.ProductStatusEnum;
+import com.nsntc.sell.util.EnumUtil;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -28,8 +31,14 @@ public class ProductInfo {
     private Integer productStock;
     private String productDesc;
     private String productIcon;
-    private Integer productStatus;
+    private Integer productStatus = ProductStatusEnum.DOWN.getCode();
     private Integer categoryType;
     private Date createTime;
     private Date updateTime;
+
+    /** 根据int值返回枚举类型message */
+    @JsonIgnore
+    public ProductStatusEnum getProductStatusEnum() {
+        return EnumUtil.getByCode(productStatus, ProductStatusEnum.class);
+    }
 }

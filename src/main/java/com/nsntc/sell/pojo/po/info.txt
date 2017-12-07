@@ -1,0 +1,1 @@
+persistant object持久对象

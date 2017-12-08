@@ -1,6 +1,7 @@
 package com.nsntc.sell.service.impl;
 
 import com.nsntc.sell.pojo.po.ProductCategory;
+import com.nsntc.sell.service.system.impl.CategoryServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.nsntc.sell.config.other;
+package com.nsntc.sell.config.properties;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 
 /**
  * Class Name: ProjectUrlConfig
- * Package: com.nsntc.sell.config.other
- * Description: 
+ * Package: com.nsntc.sell.config.properties
+ * Description:
  * @author wkm
- * Create DateTime: 2017/12/8 上午1:02
+ * Create DateTime: 2017/12/8 下午10:58
  * Version: 1.0
  */
 @Data

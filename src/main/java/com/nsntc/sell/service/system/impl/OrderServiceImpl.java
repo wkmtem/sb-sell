@@ -1,5 +1,6 @@
-package com.nsntc.sell.service.impl;
+package com.nsntc.sell.service.system.impl;
 
+import com.nsntc.sell.component.WebSocket;
 import com.nsntc.sell.converter.OrderMaster2OrderDTOConverter;
 import com.nsntc.sell.enums.HttpResultEnum;
 import com.nsntc.sell.enums.OrderStatusEnum;
@@ -12,9 +13,10 @@ import com.nsntc.sell.pojo.po.OrderMaster;
 import com.nsntc.sell.pojo.po.ProductInfo;
 import com.nsntc.sell.repository.OrderDetailRepository;
 import com.nsntc.sell.repository.OrderMasterRepository;
-import com.nsntc.sell.service.IOrderService;
-import com.nsntc.sell.service.IProductService;
+import com.nsntc.sell.service.system.IOrderService;
+import com.nsntc.sell.service.system.IProductService;
 import com.nsntc.sell.service.pay.wechat.IPayService;
+import com.nsntc.sell.service.push.wechat.IWechatPushMessageService;
 import com.nsntc.sell.util.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -33,10 +35,10 @@ import java.util.stream.Collectors;
 
 /**
  * Class Name: OrderServiceImpl
- * Package: com.nsntc.sell.service.impl
+ * Package: com.nsntc.sell.service.system.impl
  * Description:
  * @author wkm
- * Create DateTime: 2017/12/3 下午3:46
+ * Create DateTime: 2017/12/8 下午11:01
  * Version: 1.0
  */
 @Service
@@ -52,9 +54,9 @@ public class OrderServiceImpl implements IOrderService {
     @Autowired
     private IPayService payService;
     @Autowired
-    private IPushMessageService pushMessageService;
+    private IWechatPushMessageService wechatPushMessageService;
     @Autowired
-    private IWebSocket webSocket;
+    private WebSocket webSocket;
 
     /**
      * Method Name: create
@@ -228,7 +230,7 @@ public class OrderServiceImpl implements IOrderService {
         }
 
         /** 推送微信模版消息 */
-        this.pushMessageService.orderStatus(orderDTO);
+        this.wechatPushMessageService.orderStatus(orderDTO);
         return orderDTO;
     }
 

@@ -1,8 +1,8 @@
-package com.nsntc.sell.service.impl;
+package com.nsntc.sell.service.system.impl;
 
 import com.nsntc.sell.pojo.po.ProductCategory;
 import com.nsntc.sell.repository.ProductCategoryRepository;
-import com.nsntc.sell.service.ICategoryService;
+import com.nsntc.sell.service.system.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +10,10 @@ import java.util.List;
 
 /**
  * Class Name: CategoryServiceImpl
- * Package: com.nsntc.sell.service.impl
+ * Package: com.nsntc.sell.service.system.impl
  * Description:
  * @author wkm
- * Create DateTime: 2017/12/2 下午7:23
+ * Create DateTime: 2017/12/8 下午11:01
  * Version: 1.0
  */
 @Service

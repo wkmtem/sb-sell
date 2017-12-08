@@ -72,5 +72,8 @@ public class WechatAccountConfig {
     /**
      * 微信模版id
      */
-    private Map<String, String> templateId;
+    @Value("${wechat.templateId.orderStatus}")
+    private String tempIdOrderStatus;
+    @Value("${wechat.templateId.payStatus}")
+    private String tempIdPayStatus;
 }

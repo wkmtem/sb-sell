@@ -7,7 +7,7 @@ import com.nsntc.sell.exception.ExceptionCustom;
 import com.nsntc.sell.form.OrderForm;
 import com.nsntc.sell.pojo.dto.OrderDTO;
 import com.nsntc.sell.service.buyer.IBuyerService;
-import com.nsntc.sell.service.IOrderService;
+import com.nsntc.sell.service.system.IOrderService;
 import com.nsntc.sell.util.HttpResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

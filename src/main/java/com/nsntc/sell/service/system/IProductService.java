@@ -1,4 +1,4 @@
-package com.nsntc.sell.service;
+package com.nsntc.sell.service.system;
 
 import com.nsntc.sell.pojo.dto.CartDTO;
 import com.nsntc.sell.pojo.po.ProductInfo;
@@ -9,10 +9,10 @@ import java.util.List;
 
 /**
  * Class Name: IProductService
- * Package: com.nsntc.sell.service
+ * Package: com.nsntc.sell.service.system
  * Description: 商品
  * @author wkm
- * Create DateTime: 2017/12/2 下午8:49
+ * Create DateTime: 2017/12/8 下午11:00
  * Version: 1.0
  */
 public interface IProductService {

@@ -2,6 +2,7 @@ package com.nsntc.sell.service.impl;
 
 import com.nsntc.sell.enums.ProductStatusEnum;
 import com.nsntc.sell.pojo.po.ProductInfo;
+import com.nsntc.sell.service.system.impl.ProductServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

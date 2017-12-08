@@ -82,10 +82,9 @@
             </div>
         </div>
     </div>
-
 </div>
 
-<#--弹窗-->
+<#--webSocket: 弹窗-->
 <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -99,53 +98,61 @@
                 你有新的订单
             </div>
             <div class="modal-footer">
-                <button onclick="javascript:document.getElementById('notice').pause()" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <#--关闭弹窗-->
+                <button onclick="javascript:document.getElementById('audio').pause()" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <#--刷新当前页面-->
                 <button onclick="location.reload()" type="button" class="btn btn-primary">查看新的订单</button>
             </div>
         </div>
     </div>
 </div>
 
-<#--播放音乐-->
-<audio id="notice" loop="loop">
+<#--webSocket: 播放音乐-->
+<audio id="audio" loop="loop">
     <source src="/sell/mp3/song.mp3" type="audio/mpeg" />
 </audio>
 
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<#--webSocket: js-->
 <script>
+    // h5原生直接支持webSocket
     var websocket = null;
+    // 游览器是否支持
     if('WebSocket' in window) {
+        /** 与后台建立连接 */
         websocket = new WebSocket('ws://sell.natapp4.cc/sell/webSocket');
     }else {
+        console.log('该浏览器不支持websocket!')
         alert('该浏览器不支持websocket!');
     }
 
+    // webSocket open事件
     websocket.onopen = function (event) {
         console.log('建立连接');
     }
-
+    // webSocket close事件
     websocket.onclose = function (event) {
         console.log('连接关闭');
     }
-
+    // webSocket 消息事件
     websocket.onmessage = function (event) {
         console.log('收到消息:' + event.data)
-        //弹窗提醒, 播放音乐
+        // 弹窗提醒
         $('#myModal').modal('show');
-
-        document.getElementById('notice').play();
+        // 播放音乐
+        $('#audio').play();
+        //document.getElementById('audio').play();
     }
-
+    // webSocket 异常事件
     websocket.onerror = function () {
         alert('websocket通信发生错误！');
     }
-
+    // webSocket 关闭窗口前关闭webSocket事件
     window.onbeforeunload = function () {
         websocket.close();
     }
-
 </script>
-
 </body>
 </html>

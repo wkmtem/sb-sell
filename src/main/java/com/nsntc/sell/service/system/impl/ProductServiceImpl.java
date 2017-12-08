@@ -1,4 +1,4 @@
-package com.nsntc.sell.service.impl;
+package com.nsntc.sell.service.system.impl;
 
 import com.nsntc.sell.enums.HttpResultEnum;
 import com.nsntc.sell.enums.ProductStatusEnum;
@@ -6,7 +6,7 @@ import com.nsntc.sell.exception.ExceptionCustom;
 import com.nsntc.sell.pojo.dto.CartDTO;
 import com.nsntc.sell.pojo.po.ProductInfo;
 import com.nsntc.sell.repository.ProductInfoRepository;
-import com.nsntc.sell.service.IProductService;
+import com.nsntc.sell.service.system.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,10 +17,10 @@ import java.util.List;
 
 /**
  * Class Name: ProductServiceImpl
- * Package: com.nsntc.sell.service.impl
+ * Package: com.nsntc.sell.service.system.impl
  * Description:
  * @author wkm
- * Create DateTime: 2017/12/2 下午8:53
+ * Create DateTime: 2017/12/8 下午11:01
  * Version: 1.0
  */
 @Service

@@ -1,4 +1,4 @@
-package com.nsntc.sell.service;
+package com.nsntc.sell.service.system;
 
 import com.nsntc.sell.pojo.dto.OrderDTO;
 import org.springframework.data.domain.Page;
@@ -6,10 +6,10 @@ import org.springframework.data.domain.Pageable;
 
 /**
  * Class Name: IOrderService
- * Package: com.nsntc.sell.service
+ * Package: com.nsntc.sell.service.system
  * Description: 订单service
  * @author wkm
- * Create DateTime: 2017/12/3 下午3:36
+ * Create DateTime: 2017/12/8 下午11:00
  * Version: 1.0
  */
 public interface IOrderService {

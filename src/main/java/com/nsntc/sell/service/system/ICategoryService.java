@@ -1,4 +1,4 @@
-package com.nsntc.sell.service;
+package com.nsntc.sell.service.system;
 
 import com.nsntc.sell.pojo.po.ProductCategory;
 
@@ -6,10 +6,10 @@ import java.util.List;
 
 /**
  * Class Name: ICategoryService
- * Package: com.nsntc.sell.service
+ * Package: com.nsntc.sell.service.system
  * Description:
  * @author wkm
- * Create DateTime: 2017/12/2 下午7:20
+ * Create DateTime: 2017/12/8 下午11:00
  * Version: 1.0
  */
 public interface ICategoryService {

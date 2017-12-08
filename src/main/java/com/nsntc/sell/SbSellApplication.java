@@ -3,7 +3,9 @@ package com.nsntc.sell;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 /**
  * Class Name: SbSellApplication
@@ -13,9 +15,13 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
  * Create DateTime: 2017/12/2 上午12:59
  * Version: 1.0
  */
-@SpringBootApplication
+/** 复合注解: 包含@ComponentScan(扫描@Component,@Controller,@Service,@Repository), @SpringBootConfiguration, @EnableAutoConfiguration */
+@SpringBootApplication(scanBasePackages = "com.nsntc.sell") /** 扫描@SpringBootApplication注解标记类包下及其子包的类,可指定可排除某个class */
+/** 扫描@WebServlet */
 @ServletComponentScan
 public class SbSellApplication {
+/** 用于package war, 在外部的tomcat中运行(springbooot在根目录下自动生成org.springframework.boot.loader包(启动类)) */
+//public class SbSellApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 
@@ -29,4 +35,16 @@ public class SbSellApplication {
         application.setBannerMode(Banner.Mode.CONSOLE);
         application.run(args);
 	}
+
+    /**
+     * Method Name: configure
+     * Description: 设置外部tomcat运行的启动类(入口), 即本类
+     * Create DateTime: 2017/12/8 下午6:04
+     * @param builder
+     * @return
+     */
+//    @Override
+//    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+//        return builder.sources(SbSellApplication.class);
+//    }
 }

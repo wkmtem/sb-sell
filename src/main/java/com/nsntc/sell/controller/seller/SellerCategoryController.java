@@ -3,7 +3,7 @@ package com.nsntc.sell.controller.seller;
 import com.nsntc.sell.exception.ExceptionCustom;
 import com.nsntc.sell.form.CategoryForm;
 import com.nsntc.sell.pojo.po.ProductCategory;
-import com.nsntc.sell.service.ICategoryService;
+import com.nsntc.sell.service.system.ICategoryService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

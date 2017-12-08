@@ -1,6 +1,6 @@
 package com.nsntc.sell.controller.seller;
 
-import com.nsntc.sell.config.other.ProjectUrlConfig;
+import com.nsntc.sell.config.properties.ProjectUrlConfig;
 import com.nsntc.sell.constant.CookieConstant;
 import com.nsntc.sell.constant.RedisConstant;
 import com.nsntc.sell.enums.HttpResultEnum;

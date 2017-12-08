@@ -1,4 +1,4 @@
-package com.nsntc.sell.config;
+package com.nsntc.sell.config.yml;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

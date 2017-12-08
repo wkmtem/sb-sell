@@ -1,6 +1,6 @@
 package com.nsntc.sell.handler;
 
-import com.nsntc.sell.config.other.ProjectUrlConfig;
+import com.nsntc.sell.config.properties.ProjectUrlConfig;
 import com.nsntc.sell.exception.SellerAuthorizeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;

@@ -65,11 +65,18 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- springboot websocket组件 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
 		<!-- packaging为war时，需该依赖 -->
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.boot</groupId>-->
 			<!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
-			<!--&lt;!&ndash;<scope>provided</scope>&ndash;&gt;&lt;!&ndash; 解决HV000184: ParameterMessageInterpolator has been chosen, EL interpolation will not be supported &ndash;&gt;-->
+			<!--&lt;!&ndash;provided: starter-web含有tomcat依赖, 使用外部的tomcat, 打包时排除&ndash;&gt;-->
+			<!--<scope>provided</scope>-->
 		<!--</dependency>-->
 
 		<!-- spring官方模版引擎, html模版放置于resources下templates目录中 -->
@@ -153,6 +160,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

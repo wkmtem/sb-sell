@@ -1,6 +1,6 @@
 package com.nsntc.sell.controller.wechat.buyer;
 
-import com.nsntc.sell.config.other.ProjectUrlConfig;
+import com.nsntc.sell.config.properties.ProjectUrlConfig;
 import com.nsntc.sell.enums.HttpResultEnum;
 import com.nsntc.sell.exception.ExceptionCustom;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +9,7 @@ import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.result.WxMpOAuth2AccessToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,8 @@ import java.net.URLEncoder;
 @Slf4j
 public class WechatBuyerController {
 
-    @Autowired
+    @Autowired /** only byType */
+    @Qualifier(value = "wxMpService") /** byName */
     private WxMpService wxMpService;
     @Autowired
     private ProjectUrlConfig projectUrlConfig;
@@ -70,7 +72,7 @@ public class WechatBuyerController {
      */
     @GetMapping("wxUserInfo")
     public String wxUserInfo(@RequestParam("code") String code,
-                           @RequestParam("state") String returnUrl) {
+                             @RequestParam("state") String returnUrl) {
         WxMpOAuth2AccessToken wxMpOAuth2AccessToken = null;
         try {
             /** 获取access token */

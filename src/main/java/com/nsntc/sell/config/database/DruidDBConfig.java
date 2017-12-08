@@ -68,37 +68,37 @@ public class DruidDBConfig {
     @Value("${spring.datasource.connectionProperties}")
     private String connectionProperties;
 
-    /** Spring容器管理, 未指定name, 则是方法名; 指定, 方法名被忽略。bean的名称和别名也可以通过value指定 */
+    /** Spring容器管理: name即bean的id, 默认方法名; 指定, 方法名被忽略。bean的名称和别名也可以通过value指定 */
     @Bean(name = "dataSource")
     /** 在相同的DataSource中，首先使用被标注@Primary的DataSource,这里定义的DataSource将覆盖其他来源的DataSource */
     @Primary
     public DataSource dataSource(){
-        DruidDataSource datasource = new DruidDataSource();
+        DruidDataSource druidDataSource = new DruidDataSource();
 
-        datasource.setUrl(this.dbUrl);
-        datasource.setUsername(this.username);
-        datasource.setPassword(this.password);
-        datasource.setDriverClassName(this.driverClassName);
+        druidDataSource.setUrl(this.dbUrl);
+        druidDataSource.setUsername(this.username);
+        druidDataSource.setPassword(this.password);
+        druidDataSource.setDriverClassName(this.driverClassName);
 
         /** configuration */
-        datasource.setInitialSize(this.initialSize);
-        datasource.setMinIdle(this.minIdle);
-        datasource.setMaxActive(this.maxActive);
-        datasource.setMaxWait(this.maxWait);
-        datasource.setTimeBetweenEvictionRunsMillis(this.timeBetweenEvictionRunsMillis);
-        datasource.setMinEvictableIdleTimeMillis(this.minEvictableIdleTimeMillis);
-        datasource.setValidationQuery(this.validationQuery);
-        datasource.setTestWhileIdle(this.testWhileIdle);
-        datasource.setTestOnBorrow(this.testOnBorrow);
-        datasource.setTestOnReturn(this.testOnReturn);
-        datasource.setPoolPreparedStatements(this.poolPreparedStatements);
-        datasource.setMaxPoolPreparedStatementPerConnectionSize(this.maxPoolPreparedStatementPerConnectionSize);
+        druidDataSource.setInitialSize(this.initialSize);
+        druidDataSource.setMinIdle(this.minIdle);
+        druidDataSource.setMaxActive(this.maxActive);
+        druidDataSource.setMaxWait(this.maxWait);
+        druidDataSource.setTimeBetweenEvictionRunsMillis(this.timeBetweenEvictionRunsMillis);
+        druidDataSource.setMinEvictableIdleTimeMillis(this.minEvictableIdleTimeMillis);
+        druidDataSource.setValidationQuery(this.validationQuery);
+        druidDataSource.setTestWhileIdle(this.testWhileIdle);
+        druidDataSource.setTestOnBorrow(this.testOnBorrow);
+        druidDataSource.setTestOnReturn(this.testOnReturn);
+        druidDataSource.setPoolPreparedStatements(this.poolPreparedStatements);
+        druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(this.maxPoolPreparedStatementPerConnectionSize);
         try {
-            datasource.setFilters(this.filters);
+            druidDataSource.setFilters(this.filters);
         } catch (SQLException e) {
             log.error("druid configuration initialization filter", e);
         }
-        datasource.setConnectionProperties(this.connectionProperties);
-        return datasource;
+        druidDataSource.setConnectionProperties(this.connectionProperties);
+        return druidDataSource;
     }
 }

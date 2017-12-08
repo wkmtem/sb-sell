@@ -16,11 +16,11 @@ import org.springframework.web.client.RestTemplate;
  * Version: 1.0
  */
 @RestController
-@RequestMapping("/weixin")
+@RequestMapping("weixin")
 @Slf4j
 public class WeixinController {
 
-    @GetMapping("/auth")
+    @GetMapping("auth")
     public void auth(@RequestParam("code") String code) {
         log.info("进入auth方法。。。");
         log.info("code={}", code);

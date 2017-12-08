@@ -1,0 +1,7 @@
+apache ab 压力测试模拟并发
+-n: 请求数量
+-c: 并发数量
+ab -n 1000 -c 100 http://127.0.0.1:8080/sell/skill/order/123456
+
+-t: time范围(秒)
+ab -t 60 -c 100 http://127.0.0.1:8080/sell/skill/order/123456

@@ -10,6 +10,8 @@ import com.nsntc.sell.util.KeyUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -137,6 +139,10 @@ public class SellerProductController {
      * @return
      */
     @PostMapping("save")
+    /** 缓存的最终返回对象与cacheNames指定的对象不同(相同时,可使用该注解)，且ModelAndView不能序列化 */
+    //@CachePut(cacheNames = {"product"}, key = "123")
+    /** 此方法完成后，清除缓存 */
+    @CacheEvict(cacheNames = {"product"}, key = "123")
     public ModelAndView save(@Valid ProductForm form, BindingResult bindingResult,
                              Map<String, Object> map) {
         if (bindingResult.hasErrors()) {

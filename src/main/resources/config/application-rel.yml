@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://rm-uf6h02b6qu44p4317o.mysql.rds.aliyuncs.com:3306/examination_test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&zeroDateTimeBehavior=convertToNull&autoReconnect=true&allowMultiQueries=true
+    username: tlj
+    password: Tlj20170322@
+
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  redis:
+    database: 0
+    host: 139.196.195.162
+    port: 6379
+    password: omega
+    pool:
+      max-idle: 8
+      min-idle: 0
+      max-active: 8
+      max-wait: -1
+
+server:
+  port: 8080
+  context-path: /sell
+
+logging:
+  level:
+    com.nsntc.sell.repository.mapper: trace

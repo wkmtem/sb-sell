@@ -10,6 +10,8 @@ import com.nsntc.sell.pojo.vo.ProductInfoVO;
 import com.nsntc.sell.pojo.vo.ProductVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
@@ -31,6 +33,8 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("buyer/product")
+/** 本类中cacheNames公用 */
+@CacheConfig(cacheNames = {"product"})
 public class BuyerProductController {
 
     @Autowired
@@ -45,7 +49,10 @@ public class BuyerProductController {
      * @return
      */
     @GetMapping(value = "list")
-    public ResponseEntity<HttpResult> list() {
+    /** 缓存的是最终返回对象,需Serializable,cacheNames=reids表名也是key前缀并冒号隔开,key=redis的key,默认值:方法的参数 */
+    /** SpEL表达式, condition结果true:对结果对象缓存, unless(除非)根据返回对象结果进行缓存:#result是返回对象*/
+    @Cacheable(key = "#sellerId", condition = "#sellerId.length() > 3", unless = "#result.getStatusCode() != 200")
+    public ResponseEntity<HttpResult> list(String sellerId) {
 
         List<ProductInfoVO> productInfoVOList = null;
         ProductInfoVO productInfoVO = null;

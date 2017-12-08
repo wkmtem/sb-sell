@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.cache.annotation.EnableCaching;
 
 /**
  * Class Name: SbSellApplication
@@ -22,6 +23,8 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 @ServletComponentScan
 /** 扫描mapper路径 */
 @MapperScan(basePackages = "com.nsntc.sell.repository.mapper")
+/** 启用缓存 */
+@EnableCaching
 public class SbSellApplication {
 /** 用于package war, 在外部的tomcat中运行(springbooot在根目录下自动生成org.springframework.boot.loader包(启动类)) */
 //public class SbSellApplication extends SpringBootServletInitializer {

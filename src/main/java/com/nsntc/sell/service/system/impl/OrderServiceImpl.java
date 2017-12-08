@@ -1,6 +1,6 @@
 package com.nsntc.sell.service.system.impl;
 
-import com.nsntc.sell.component.WebSocket;
+import com.nsntc.sell.component.websocket.WebSocket;
 import com.nsntc.sell.converter.OrderMaster2OrderDTOConverter;
 import com.nsntc.sell.enums.HttpResultEnum;
 import com.nsntc.sell.enums.OrderStatusEnum;

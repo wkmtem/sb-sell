@@ -2,6 +2,7 @@ package com.nsntc.sell.service.system.impl;
 
 import com.nsntc.sell.pojo.po.ProductCategory;
 import com.nsntc.sell.repository.ProductCategoryRepository;
+import com.nsntc.sell.repository.dao.ProductCategoryDao;
 import com.nsntc.sell.service.system.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,8 @@ public class CategoryServiceImpl implements ICategoryService {
 
     @Autowired
     private ProductCategoryRepository productCategoryRepository;
+    @Autowired
+    private ProductCategoryDao productCategoryDao;
 
 
     @Override

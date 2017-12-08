@@ -1,8 +1,8 @@
 package com.nsntc.sell.exception;
 
 import com.nsntc.sell.enums.HttpResultEnum;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 /**
  * Class Name: ExceptionCustom
@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * Create DateTime: 2017/12/2 下午5:54
  * Version: 1.0
  */
-@Data
+@Getter
 @EqualsAndHashCode(callSuper = false)
 public class ExceptionCustom extends RuntimeException{
 

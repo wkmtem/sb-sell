@@ -38,3 +38,19 @@ spring:
 server:
   port: 8080
   context-path: /sell
+
+# logback简单配置: 日志文件路径、日志输出格式
+logging:
+#  pattern:
+#    # 控制台日志格式: %d: date, %msg: 日志信息, %n: 换行
+#    console: "%d - %msg%n"
+#  # 日志级别: error-40、warn-30、info-20、debug-10、trace-0
+  level: #debug
+#    # 指定mapper包下mybatis show sql
+    com.nsntc.sell.repository.mapper: trace
+#  # 配置文件路径
+#  config:
+#  # 输出日志路径, 默认文件名为spring.log
+#  path: /Users/wkmtem/development/tomcat-7.0.77/
+#  # 输出日志文件名称,与path功能相同
+#  file: /Users/wkmtem/development/tomcat-7.0.77/log.log

@@ -1,5 +1,6 @@
 package com.nsntc.sell;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,6 +20,8 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 @SpringBootApplication(scanBasePackages = "com.nsntc.sell") /** 扫描@SpringBootApplication注解标记类包下及其子包的类,可指定可排除某个class */
 /** 扫描@WebServlet */
 @ServletComponentScan
+/** 扫描mapper路径 */
+@MapperScan(basePackages = "com.nsntc.sell.repository.mapper")
 public class SbSellApplication {
 /** 用于package war, 在外部的tomcat中运行(springbooot在根目录下自动生成org.springframework.boot.loader包(启动类)) */
 //public class SbSellApplication extends SpringBootServletInitializer {

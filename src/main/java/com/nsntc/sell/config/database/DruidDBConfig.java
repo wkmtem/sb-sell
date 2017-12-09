@@ -67,6 +67,10 @@ public class DruidDBConfig {
     private String filters;
     @Value("${spring.datasource.connectionProperties}")
     private String connectionProperties;
+    @Value("${spring.datasource.removeAbandoned}")
+    private boolean removeAbandoned;
+    @Value("${spring.datasource.removeAbandonedTimeout}")
+    private int removeAbandonedTimeout;
 
     /** Spring容器管理: name即bean的id, 默认方法名; 指定, 方法名被忽略。bean的名称和别名也可以通过value指定 */
     @Bean(name = "dataSource")
@@ -93,6 +97,8 @@ public class DruidDBConfig {
         druidDataSource.setTestOnReturn(this.testOnReturn);
         druidDataSource.setPoolPreparedStatements(this.poolPreparedStatements);
         druidDataSource.setMaxPoolPreparedStatementPerConnectionSize(this.maxPoolPreparedStatementPerConnectionSize);
+        druidDataSource.setRemoveAbandoned(this.removeAbandoned);
+        druidDataSource.setRemoveAbandonedTimeout(this.removeAbandonedTimeout);
         try {
             druidDataSource.setFilters(this.filters);
         } catch (SQLException e) {

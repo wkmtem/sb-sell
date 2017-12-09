@@ -1,0 +1,50 @@
+1、外部tomcat
+
+2、jar部署
+    1、打包(项目路径/target下): mvn clean package -Dmaven.text.skip=true
+    2、scp target/sell.jar root@127.0.0.1:/xxx/xxx
+    3、控制台启动: java -jar sell.jar
+       指定端口启动: java -jar -Dserver.port=8888 sell.jar
+       指定环境启动: java -jar -Dserver.port=8888 -Dspring.profiles.active=pro sell.jar
+
+    4、后台启动:
+       缺省:所有输出重定向到nohup.out中: nohup java -jar sell.jar &
+       1: stdout标准输出: 系统默认值:1, > /dev/null 等同于 1 > /dev/null
+       2: stderr标准错误
+       &: 等同于的意思，2>&1: 2的输出重定向等同于1
+       标准输出到myout.file中, 标准错误输出重定向等同于标准输出, 即输出到同一文件中
+       指定了输出文件: nohup java -jar sell.jar > myout.file 2>&1 &
+       空设备文件,不输出任何信息到终端: nohup java -jar sell.jar > /dev/null 2>&1 &
+
+    5、shell脚本:
+        #!/bin/sh
+        nohup java -jar sell.jar > /dev/null 2>&1 &
+
+    6、Centos7建议启动方式
+       命令:
+           启动: systemctl start sell[.service]
+           开机启动: systemctl enable sell[.service]
+           取消开机启动: systemctl disable sell[.service]
+           停止: systemctl stop sell[.service]
+           (如编辑过sell.service,需重新加载: systemctl daemon-reload)
+       1、在/etc/systemd/system/下创建项目文件: sell.service
+       2、内容
+           [Unit]
+           Description=sell
+           # 依赖服务
+           After=syslog.target network.target
+
+           [Service]
+           # 启动模式
+           Type=simple
+
+           # 启动命令
+           ExecStart=/usr/bin/java -jar /opt/javaapps/sell.jar
+           # 停止
+           ExecStop=/bin/kill -15 $MAINPID
+
+           User=root
+           Group=root
+
+           [Install]
+           WantedBy=multi-user.target

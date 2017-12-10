@@ -26,31 +26,19 @@ public class DruidDBConfig {
     @Autowired
     private DruidProperties druidProperties;
 
-    /** 获取对象属性 */
-    //@Value("#{druidDBConfig.driverClassName}")
-
-    /** yml配置 */
-    @Value("${spring.datasource.driver-class-name}")
-    private String driverClassName;
-    @Value("${spring.datasource.url}")
-    private String dbUrl;
-    @Value("${spring.datasource.username}")
-    private String username;
-    @Value("${spring.datasource.password}")
-    private String password;
-
     /** Spring容器管理: name即bean的id, 默认方法名; 指定, 方法名被忽略。bean的名称和别名也可以通过value指定 */
     @Bean(name = "dataSource")
     /** 在相同的DataSource中，首先使用被标注@Primary的DataSource,这里定义的DataSource将覆盖其他来源的DataSource */
     @Primary
     public DataSource dataSource(){
+
         DruidDataSource druidDataSource = new DruidDataSource();
 
         /** database info */
-        druidDataSource.setUrl(this.dbUrl);
-        druidDataSource.setUsername(this.username);
-        druidDataSource.setPassword(this.password);
-        druidDataSource.setDriverClassName(this.driverClassName);
+        druidDataSource.setUrl(this.druidProperties.getDbUrl());
+        druidDataSource.setUsername(this.druidProperties.getUsername());
+        druidDataSource.setPassword(this.druidProperties.getPassword());
+        druidDataSource.setDriverClassName(this.druidProperties.getDriverClassName());
 
         /** configuration */
         druidDataSource.setInitialSize(this.druidProperties.getInitialSize());

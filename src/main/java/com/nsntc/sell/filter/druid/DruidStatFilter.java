@@ -4,6 +4,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 
 import com.alibaba.druid.support.http.WebStatFilter;
+import com.nsntc.sell.constant.DruidConstant;
 
 /**
  * Class Name: DruidStatFilter
@@ -25,8 +26,9 @@ import com.alibaba.druid.support.http.WebStatFilter;
  * Create DateTime: 2017/12/1 下午10:46
  * Version: 1.0
  */
-@WebFilter(filterName="druidWebStatFilter",
-           urlPatterns="/*",
-           initParams={@WebInitParam(name = "exclusions", value = "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*")})/** 忽略资源 */
+@WebFilter(filterName = DruidConstant.MONITOR_FILTER_FILTERNAME,
+           urlPatterns = DruidConstant.MONITOR_FILTER_URLPATTERNS,
+           initParams = {@WebInitParam(name = DruidConstant.MONITOR_FILTER_INITPARAMS_NAME,
+                                       value = DruidConstant.MONITOR_FILTER_INITPARAMS_VALUE)})/** 忽略资源 */
 public class DruidStatFilter extends WebStatFilter {
 }

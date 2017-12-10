@@ -4,6 +4,7 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 
 import com.alibaba.druid.support.http.StatViewServlet;
+import com.nsntc.sell.constant.DruidConstant;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
@@ -22,12 +23,12 @@ import org.springframework.beans.factory.annotation.Value;
  * Create DateTime: 2017/12/1 下午10:56
  * Version: 1.0
  */
-@WebServlet(urlPatterns="/druid/*",
-            initParams={@WebInitParam(name = "allow", value = ""),/** IP白名单(没有配置或者为空,则允许所有访问) */
-                        @WebInitParam(name = "deny", value = ""),/** IP黑名单(存在共同时,deny优先于allow) */
-                        @WebInitParam(name = "loginUsername", value = "administrator"),/** 用户名 */
-                        @WebInitParam(name = "loginPassword", value = "omega"),/** 密码 */
-                        @WebInitParam(name = "resetEnable", value = "false")})/** 禁用HTML页面上的'Reset All'功能 */
+@WebServlet(urlPatterns = DruidConstant.MONITOR_URLPATTERNS,
+            initParams = {@WebInitParam(name = "allow", value = DruidConstant.MONITOR_ALLOW),/** IP白名单(没有配置或者为空,则允许所有访问) */
+                          @WebInitParam(name = "deny", value = DruidConstant.MONITOR_DENY),/** IP黑名单(存在共同时,deny优先于allow) */
+                          @WebInitParam(name = "loginUsername", value = DruidConstant.MONITOR_LOGINUSERNAME),/** 用户名 */
+                          @WebInitParam(name = "loginPassword", value = DruidConstant.MONITOR_LOGINPASSWORD),/** 密码 */
+                          @WebInitParam(name = "resetEnable", value = DruidConstant.MONITOR_RESETENABLE)})/** 禁用HTML页面上的'Reset All'功能 */
 public class DruidStatViewServlet extends StatViewServlet {
     private static final long serialVersionUID = -2699972071445249526L;
 }
